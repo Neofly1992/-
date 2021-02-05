@@ -64,3 +64,43 @@ Recovery 是 Android 手机备份功能，指的是一种可以对安卓机内�
 6. 使用同样的方式安装其它第三方扩展包。
 
 7. 安装结束后，返回主菜单，点击 Reboot, 然后点击 System。
+
+## Termux
+
+Termux 是一个 Android 下一个高级的终端模拟器,开源且不需要 root，支持 apt  管理软件包，十分方便安装软件包，完美支持 Python、 PHP、 Ruby、 Nodejs、  MySQL等。随着智能设备的普及和性能的不断提升，如今的手机、平板等的硬件标准已达到了初级桌面计算机的硬件标准，用心去打造 DIY  的话完全可以把手机变成一个强大的极客工具。
+
+需要指出的是，如果是使用酷安应用市场安装的话，可能会在启动时提示 “Termux was unable to install the bootstrap packages”，如果这时又不方便挂代理的话，可以选择去 F-Droid 平台下载。事实上现在官网中的 Release 也是 “F-Droid only”。
+
+1. 下载 [Termux](https://f-droid.org/packages/com.termux/) 并安装。
+
+2. 软件安装。Termux 在 apt 的基础上封装了 pkg 命令，并且向下兼容 apt 命令，因此使用起来非常方便。可以修改镜像为[清华源](https://mirror.tuna.tsinghua.edu.cn/help/termux/)以提高速度。
+
+   *Termux 的家目录并不在 /home 下，而是在 /data/data/com.termux/files/home。因此在修改配置时需要注意。Termux也为我们预定义了 `$HOME` `$PREFIX` `TMPPREFIX` 等变量方便使用。*
+
+3. 定制按键。编辑按键配置文件 `vim ~/.termux/termux.properties`，输入如下内容：
+
+   ```
+   extra-keys = [ \
+    ['ESC','|','/','HOME','UP','END','PGUP','DEL'], \
+    ['TAB','CTRL','ALT','LEFT','DOWN','RIGHT','PGDN','BKSP'] \
+   ]
+   ```
+
+   重启生效。
+
+4. 超级管理员身份。
+
+   1. 手机未 root
+
+      利用 proot 可以为手机没有 root 的用户来模拟一个 root 的环境，该环境模仿 Termux 中的常规Linux文件系统，但是不是真正的 root。
+
+      安装 proot 后，可以通过命令 `termux-chroot` 模拟 root 环境。退出时可以使用 `exit` 命令。
+
+   2. 手机已 root
+
+      可以使用 tsu，其是一个 su 的 Termux 版本。是一个真正的root权限，用来在 termux 上替代 su，操作不慎可能对手机有安全风险。
+
+      同样使用 `tsu` 命令切换到 root 用户，使用 `exit` 命令退出。
+
+5. 端口查看。Android 10 及以下的版本可以正常使用 `netstat -an` 命令，目前 Android 10 以上版本上述命令存在问题，可以安装 nmap 后使用 `nmap 127.0.0.1` 命令替代。
+
