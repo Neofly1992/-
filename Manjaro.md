@@ -1,7 +1,3 @@
-
-
-
-
 #  Manjaro 系统安装与配置
 
 ## Manjaro 系统安装
@@ -223,6 +219,9 @@ sudo pacman -S android-tools
 sudo pacman -S codeblocks
 sudo pacman -S steam
 sudo pacman -S albert
+sudo pacman -S indicator-sysmonitor
+sudo pacman -S guake // kde 桌面环境可以使用 yakuake
+sudo pacman -S fish // 可以使用 oh-my-fish 作为配置文件，并安装插件如 wttr 等
 ```
 
 ### 字体安装
