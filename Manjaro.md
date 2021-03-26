@@ -82,6 +82,26 @@ sudo pacman -S yay
 
 以后安装很多官方仓库没有收录的软件时，就可以使用它了。
 
+### 使用grub引导双系统
+
+Manjaro官方已经发布新版本Grub2，执行以下命令即可更新：
+
+```
+sudo pacman -Syu
+```
+
+更新之后，对于双系统的用户，你可能想启用os-prober来检测除了Manjaro之外的其他操作系统。此时你只需打开终端，运行以下命令即可。
+
+```
+sudo echo GRUB_DISABLE_OS_PROBER=false >> /etc/default/grub && sudo update-grub
+```
+
+如果显示权限不够
+
+```
+sudo su
+```
+
 ### 安装输入法
 
 对于新安装的 Linux 系统，很多时候没有输入法是很头疼的一件事，需要尽早安装。
